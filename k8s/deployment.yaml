@@ -1,0 +1,35 @@
+# Deployment aplicação web conversão temperatura
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: web
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: web
+  template:
+    metadata:
+      labels:
+        app: web
+    spec:
+      containers:
+        - name: web
+          image: norbertosantos/conversao-temperatura:v1
+          ports:
+            - containerPort: 8080
+
+---
+# Service para Deployment do conversao-temperatura
+apiVersion: v1
+kind: Service
+metadata:
+  name: web-service
+spec:
+  selector:
+    app: web
+  ports:
+    - port: 80
+      targetPort: 8080
+      nodePort: 30001
+  type: NodePort 
