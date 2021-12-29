@@ -39,4 +39,14 @@ EXPOSE 8080
 ```docker
 CMD ["node","server.js"]
 ```
+Como boa prática, nós devemos sempre criar um arquivo **.gitignore** para não copiarmos para dentro da nossa imagem arquivos desnecessários para o funcionamento da nossa aplicação. Para esta imagem o nosso arquivo ficou com o seguinte conteúdo:
+
+```docker
+.git
+.gitignore
+README.md
+node_modules
+Dockerfile
+```
+
 
